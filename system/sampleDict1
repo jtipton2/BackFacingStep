@@ -1,0 +1,65 @@
+type            	sets;
+libs            	("libsampling.so");
+
+writeControl    	writeTime;
+
+interpolationScheme 	cellPointFace;
+
+setFormat       	raw;
+
+sets
+(
+    Uref
+    {
+        type    points;
+        points  ((-0.0508 0.0635 0.00635));
+	ordered	yes;
+	axis	y;
+    }
+
+    xHneg4
+    {
+        type    lineCellFace;
+//              type    lineCell;
+//              type    lineFace;
+//              type    lineUniform;
+        axis    y;
+        start   (-0.0508 0.0127 0.00635);
+        end     (-0.0508 0.1143 0.00635);
+        nPoints 100;
+    }
+    xHpos1
+    {
+        type    lineCellFace;
+        axis    y;
+        start   (0.0127 0 0.00635);
+        end     (0.0127 0.1143 0.00635);
+        nPoints 100;
+    }
+    xHpos4
+    {
+        type    lineCellFace;
+        axis    y;
+        start   (0.0508 0 0.00635);
+        end     (0.0508 0.1143 0.00635);
+        nPoints 100;
+    }
+    xHpos6
+    {
+        type    lineCellFace;
+        axis    y;
+        start   (0.0762 0 0.00635);
+        end     (0.0762 0.1143 0.00635);
+        nPoints 100;
+    }
+    xHpos10
+    {
+        type    lineCellFace;
+        axis    y;
+        start   (0.127 0 0.00635);
+        end     (0.127 0.1143 0.00635);
+        nPoints 100;
+    }
+);
+
+fields          ( U k );

@@ -1,0 +1,54 @@
+#
+# Clean the file structure for a new run
+#
+rm -r constant/polyMesh
+rm -r logs
+rm -r Gnuplotting.analyzed
+rm PyFoam*
+rm *.foam
+rm -r postProcessing
+rm -r [1-9]*
+
+
+
+#
+# Run the simulation
+#
+blockMesh
+checkMesh
+renumberMesh -overwrite
+pyFoamPlotRunner.py --clear-case --hardcopy --with-all simpleFoam
+
+
+
+#
+# View the convergence v1
+#
+#pyFoamTimelinePlot.py . --dir=postProcessing/probes_Uref --info
+pyFoamTimelinePlot.py . --dir=postProcessing/probes_Uref --basic-mode=lines | gnuplot
+mkdir logs
+mv *.png logs/
+#feh -w logs/*.png
+#mirage logs/ &
+
+
+
+
+#
+# View the convergence v2
+#
+foamLog *.logfile
+gnuplot system/gnuplotScript1
+mirage logs/ &
+
+
+
+#
+# Postprocess Data
+#
+postProcess -func sampleDict1 -latestTime
+simpleFoam -postProcess -func yPlus -latestTime
+simpleFoam -postProcess -func wallShearStress -latestTime
+postProcess -func sampleDict2 -latestTime
+gnuplot system/gnuplotScript2
+mirage postProcessing/sampleDict1/1500/ &

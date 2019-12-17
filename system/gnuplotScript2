@@ -1,0 +1,109 @@
+Dir0 = "`pwd`"
+Dir1 = Dir0."/postProcessing/sampleDict1/1500/"
+Dir2 = Dir0."/system/expData/"
+Dir3 = Dir0."/postProcessing/sampleDict2/1500/"
+
+
+cd Dir1
+Uref = `head -1 Uref_U.xy | awk '{print $2}'`
+H = 0.0127
+cd Dir0
+
+
+set term png
+set key left center
+set xlabel 'u/Uref'
+set ylabel 'y/H'
+
+
+set output Dir1."xHneg4_U.png"
+set title 'U Velocity at x/H = -4'
+plot [][] Dir1.'xHneg4_U.xy' u ($2/Uref):($1/H) w l title "OpenFoam", Dir2.'xHneg4.data' u 3:2 w p ls 1 title "Experiment"
+
+set output Dir1."xHpos1_U.png"
+set title 'U Velocity at x/H = 1'
+plot [][] Dir1.'xHpos1_U.xy' u ($2/Uref):($1/H) w l title "OpenFoam", Dir2.'xHpos1.data' u 3:2 w p ls 1 title "Experiment"
+
+set output Dir1."xHpos4_U.png"
+set title 'U Velocity at x/H = 4'
+plot [][] Dir1.'xHpos4_U.xy' u ($2/Uref):($1/H) w l title "OpenFoam", Dir2.'xHpos4.data' u 3:2 w p ls 1 title "Experiment"
+
+set output Dir1."xHpos6_U.png"
+set title 'U Velocity at x/H = 6'
+plot [][] Dir1.'xHpos6_U.xy' u ($2/Uref):($1/H) w l title "OpenFoam", Dir2.'xHpos6.data' u 3:2 w p ls 1 title "Experiment"
+
+set output Dir1."xHpos10_U.png"
+set title 'U Velocity at x/H = 10'
+plot [][] Dir1.'xHpos10_U.xy' u ($2/Uref):($1/H) w l title "OpenFoam", Dir2.'xHpos10.data' u 3:2 w p ls 1 title "Experiment"
+
+set output Dir1."xHposAll_U.png"
+set title 'U Velocity Profiles - OpenFoam vs. Experiment'
+set key left top
+plot [][0:4] \
+Dir1.'xHneg4_U.xy' u ($2/Uref):($1/H) w l ls 1 title "x/H = -4", Dir2.'xHneg4.data' u 3:2 w p ls 1 title " ", \
+Dir1.'xHpos1_U.xy' u ($2/Uref):($1/H) w l ls 2 title "x/H = +1", Dir2.'xHpos1.data' u 3:2 w p ls 2 title " ", \
+Dir1.'xHpos4_U.xy' u ($2/Uref):($1/H) w l ls 3 title "x/H = +4", Dir2.'xHpos4.data' u 3:2 w p ls 3 title " ", \
+Dir1.'xHpos6_U.xy' u ($2/Uref):($1/H) w l ls 4 title "x/H = +6", Dir2.'xHpos6.data' u 3:2 w p ls 4 title " ", \
+Dir1.'xHpos10_U.xy' u ($2/Uref):($1/H) w l ls 5 title "x/H = +10", Dir2.'xHpos10.data' u 3:2 w p ls 5 title " "
+
+
+
+
+
+
+set key right center
+set xlabel '1000*k/Uref^2'
+set ylabel 'y/H'
+
+set output Dir1."xHneg4_k.png"
+set title 'Tubulent Kinetic Energy at x/H = -4'
+plot [][] Dir1.'xHneg4_k.xy' u (1000*$2/Uref/Uref):($1/H) w l title "OpenFoam", Dir2.'xHneg4.data' u (0.5*($5+$6)):2 w p ls 1 title "Experiment"
+
+set output Dir1."xHpos1_k.png"
+set title 'Tubulent Kinetic Energy at x/H = 1'
+plot [][] Dir1.'xHpos1_k.xy' u (1000*$2/Uref/Uref):($1/H) w l title "OpenFoam", Dir2.'xHpos1.data' u (0.5*($5+$6)):2 w p ls 1 title "Experiment"
+
+set output Dir1."xHpos4_k.png"
+set title 'Tubulent Kinetic Energy at x/H = 4'
+plot [][] Dir1.'xHpos4_k.xy' u (1000*$2/Uref/Uref):($1/H) w l title "OpenFoam", Dir2.'xHpos4.data' u (0.5*($5+$6)):2 w p ls 1 title "Experiment"
+
+set output Dir1."xHpos6_k.png"
+set title 'Tubulent Kinetic Energy at x/H = 6'
+plot [][] Dir1.'xHpos6_k.xy' u (1000*$2/Uref/Uref):($1/H) w l title "OpenFoam", Dir2.'xHpos6.data' u (0.5*($5+$6)):2 w p ls 1 title "Experiment"
+
+set output Dir1."xHpos10_k.png"
+set title 'Tubulent Kinetic Energy at x/H = 10'
+plot [][] Dir1.'xHpos10_k.xy' u (1000*$2/Uref/Uref):($1/H) w l title "OpenFoam", Dir2.'xHpos10.data' u (0.5*($5+$6)):2 w p ls 1 title "Experiment"
+
+set output Dir1."xHposAll_k.png"
+set title 'Turbulent Kinetic Energy Profiles - OpenFoam vs. Experiment'
+set key right top
+plot [][0:4] \
+Dir1.'xHneg4_k.xy' u (1000*$2/Uref/Uref):($1/H) w l ls 1 title "x/H = -4", Dir2.'xHneg4.data' u (0.5*($5+$6)):2 w p ls 1 title " ", \
+Dir1.'xHpos1_k.xy' u (1000*$2/Uref/Uref):($1/H) w l ls 2 title "x/H = +1", Dir2.'xHpos1.data' u (0.5*($5+$6)):2 w p ls 2 title " ", \
+Dir1.'xHpos4_k.xy' u (1000*$2/Uref/Uref):($1/H) w l ls 3 title "x/H = +4", Dir2.'xHpos4.data' u (0.5*($5+$6)):2 w p ls 3 title " ", \
+Dir1.'xHpos6_k.xy' u (1000*$2/Uref/Uref):($1/H) w l ls 4 title "x/H = +6", Dir2.'xHpos6.data' u (0.5*($5+$6)):2 w p ls 4 title " ", \
+Dir1.'xHpos10_k.xy' u (1000*$2/Uref/Uref):($1/H) w l ls 5 title "x/H = +10", Dir2.'xHpos10.data' u (0.5*($5+$6)):2 w p ls 5 title " "
+
+
+
+
+
+set key right top
+set xlabel 'Distance from Step (x/H)'
+set ylabel 'wallShearStress X-component'
+set title 'Flow Reattachment Point Downstream of Step'
+set grid
+set output Dir1."reattach.png"
+plot [0:20][] Dir3.'lower_wallShearStress.xy' u ($1/H):($2) w l title "OpenFoam", Dir2.'reattach.data' u 1:2:3 with xerrorbars title "Experiment"
+
+
+
+set key left top
+set xlabel 'Distance from Step (x/H)'
+set ylabel 'y+'
+set title 'Lower Wall Turbulence Wall Function y+'
+set grid
+set output Dir1."yPlus.png"
+plot [][] Dir3.'lowerPreStep_yPlus.xy' u ($1/H):($2) w l ls 1 title "Before Step", Dir3.'lower_yPlus.xy' u ($1/H):($2) w l ls 2 title "After Step"
+

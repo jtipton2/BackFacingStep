@@ -1,0 +1,16 @@
+set term png
+set logscale y
+set format y "%.1E"
+set xlabel "iteration"
+set output "logs/convergence_Ux.png"
+plot [][] 'logs/Ux_0' u 1:2 w l, 'logs/UxFinalRes_0' u 1:2 w l
+set output "logs/convergence_Uy.png"
+plot [][] 'logs/Uy_0' u 1:2 w l, 'logs/UyFinalRes_0' u 1:2 w l
+set output "logs/convergence_p0.png"
+plot [][] 'logs/p_0' u 1:2 w l, 'logs/pFinalRes_0' u 1:2 w l
+set output "logs/convergence_k.png"
+plot [][] 'logs/k_0' u 1:2 w l, 'logs/kFinalRes_0' u 1:2 w l
+set output "logs/convergence_omega.png"
+plot [][] 'logs/omega_0' u 1:2 w l, 'logs/omegaFinalRes_0' u 1:2 w l
+set output "logs/convergence_continuity.png"
+plot [][] 'logs/contLocal_0' u 1:2 w l, 'logs/contGlobal_0' u 1:2 w l

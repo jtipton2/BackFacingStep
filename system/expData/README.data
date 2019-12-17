@@ -1,0 +1,13 @@
+# Exp data drom Driver and Seegmiller,",,,,,
+
+
+# y is y/H, u is u/Uref, v is v/Uref, ",,,,,
+# uu is 1000*u'u'/Uref**2,,,,,
+# vv is 1000*v'v'/Uref**2,,,,,
+# uv is 1000*u'v'/Uref**2,,,,,
+# triple moments are 10000*u'u'u'/Uref**3 (for example),,,,,
+
+
+
+# COLUMN HEADERS:
+x/H,y,u,v,uu,vv
