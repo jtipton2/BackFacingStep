@@ -3,6 +3,8 @@ OpenFOAM Steady Flow over a 2D Backward Facing Step
 
 Modified from https://www.openfoam.com/documentation/guides/latest/doc/verification-validation-turbulent-backward-facing-step.html
 
+![2D Backward Facing Step](https://www.grc.nasa.gov/www/wind/valid/backstep/bstepschm.jpg)
+
 ## Background
 
 The backward facing step is a classic geometry used to test CFD turbulence models.  The blunt step creates flow separation and reattachment downstream.  It has been experimentally measured and reported extensively beginning with the 1981 Stanford Conference
